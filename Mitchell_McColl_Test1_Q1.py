@@ -1,4 +1,5 @@
 name = "MitCHeLl"
-swapname = name.swapcase()
+print(name)
 
+swapname = name.swapcase()
 print(swapname)
