@@ -1,7 +1,7 @@
 import random
 
 class RockPaperScissors:
-    def __init__(self, player,computer, computerChoices, playerpoints, computerpoints):
+    def __init__(self, player, computer, computerChoices, playerpoints, computerpoints):
         self.player = player
         self.computer = computer
         self.computer_choices = computerChoices
@@ -11,23 +11,34 @@ class RockPaperScissors:
     
     def choose(self):
         global player, computer, computerChoices
-       
         computer = random.choice(computerChoices)
 
         while True:
             player = input("Please enter your choice of either, 'rock, paper, scissors': ")
-            if player == "rock" or player == "Rock" or player == "paper" or player == "Paper" or player == "scissors" or player == "Scissors":
+            player = player.lower()
+            if player == "rock":
                 rps.calculateWinner()
+
+            elif player == "paper":
+                print("test2")
+                rps.calculateWinner()
+
+            elif player == "scissors":
+                print("test3")
+                rps.calculateWinner()
+
             else:
-                print(player + " is not a correct choice.") 
+                print(player, " is not a correct choice") 
     
     def calculateWinner(self):
         return
-    
-    def displayResults(self):
-        return
 
-computerChoices = ["Rock", "Paper", "Scissors"]
+        
+    
+    def displayGameWinner(self):
+        print("You chose " + player + " and the computer chose " + computer)
+
+computerChoices = ["rock", "paper", "scissors"]
 player = ""
 playerpoints = 0
 computer = ""
