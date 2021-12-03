@@ -1,6 +1,6 @@
 import datetime
 
 t = datetime.datetime.now()
+time = t.strftime("%m-%d-%Y, %Hh:%Mm:%Ss")
 
-print("The current date and time is: " + t.strftime("%B-") + t.strftime("%d-") + t.strftime("%Y  ") + 
-t.strftime("%Hh-") + t.strftime("%Mm-") + t.strftime("%Ss"))
+print("The current date and time is: " + time)
