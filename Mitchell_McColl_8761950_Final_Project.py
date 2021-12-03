@@ -11,9 +11,9 @@ class RockPaperScissors:
     
     def choose(self):
         global player, computer, computerChoices
-        computer = random.choice(computerChoices)
-
+        
         while True:
+            computer = random.choice(computerChoices)
             player = input("Please enter your choice of either, 'rock, paper, scissors': ")
             player = player.lower()
             if player == "rock":
@@ -31,12 +31,48 @@ class RockPaperScissors:
                 print(player, " is not a correct choice") 
     
     def calculateWinner(self):
-        return
+        global player, computer, playerpoints, computerpoints
+        if player == computer:
+            print("Tie! you both chose " + player)
+        elif player == "rock":
+            if computer == "paper":
+                print("You lose! " + computer + " beats " + player)
+                computerpoints += 1
+            else:
+                print("You win! " + player + " beats" + computer)
+                playerpoints += 1
+
+        elif player == "paper":
+            if computer == "scissors":
+                print("You lose! " + computer + " beats " + player)
+                computerpoints += 1
+            else:
+                print("You win! " + player + " beats " + computer)
+                playerpoints +=1
+
+        elif player == "scissors":
+            if computer == "rock":
+                print("You lose! " + computer + " beats " + player)
+                computerpoints += 1
+            else:
+                print("You win! " + player + " beats " + computer)
+                playerpoints += 1
+        rps.displayGameWinner()
 
         
     
     def displayGameWinner(self):
-        print("You chose " + player + " and the computer chose " + computer)
+        if computerpoints == 3:
+            print("Computer has gotten 3 points! Computer wins")
+            exit()
+        
+        elif playerpoints == 3:
+            print("Player has gotten 3 points! Player wins")
+            exit()
+        print("The Player has: " + str(playerpoints))
+        print("The Computer has: " + str(computerpoints))
+        print("First to 3 points wins\n\n")
+        return
 
 computerChoices = ["rock", "paper", "scissors"]
 player = ""
@@ -46,6 +82,7 @@ computerpoints = 0
 
 rps = RockPaperScissors(player, computer, computerChoices, playerpoints, computerpoints)
 
+rps.displayGameWinner()
 while playerpoints or computerpoints != 3:
     rps.choose()
 
